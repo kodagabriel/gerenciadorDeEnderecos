@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Busca CEP-->
+        <scene sceneID="bbm-aN-w42">
+            <objects>
+                <viewController storyboardIdentifier="BuscaCEP" title="Busca CEP" id="lEU-uR-KxQ" customClass="BuscaCEPViewController" customModule="GerenciadorDeEnderecos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8qF-0i-cWD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00000-000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Ff-Se-Eyy">
+                                <rect key="frame" x="56" y="57" width="302" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTc-Kv-yDP">
+                                <rect key="frame" x="183" y="135" width="48" height="30"/>
+                                <state key="normal" title="Buscar"/>
+                                <connections>
+                                    <action selector="buscaCEPButton:" destination="lEU-uR-KxQ" eventType="touchUpInside" id="m1b-xv-uTU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6B1-xH-Jjm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JTc-Kv-yDP" firstAttribute="centerX" secondItem="8qF-0i-cWD" secondAttribute="centerX" id="2Vy-Ii-Ca9"/>
+                            <constraint firstItem="4Ff-Se-Eyy" firstAttribute="leading" secondItem="6B1-xH-Jjm" secondAttribute="leading" constant="56" id="9Af-bN-uP6"/>
+                            <constraint firstItem="6B1-xH-Jjm" firstAttribute="trailing" secondItem="4Ff-Se-Eyy" secondAttribute="trailing" constant="56" id="BfO-Xb-gab"/>
+                            <constraint firstItem="JTc-Kv-yDP" firstAttribute="top" secondItem="4Ff-Se-Eyy" secondAttribute="bottom" constant="44" id="Qcq-pT-4nU"/>
+                            <constraint firstItem="4Ff-Se-Eyy" firstAttribute="top" secondItem="6B1-xH-Jjm" secondAttribute="top" constant="57" id="Qlc-oc-qer"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="buscarButton" destination="JTc-Kv-yDP" id="v68-yb-a7d"/>
+                        <outlet property="cepTextField" destination="4Ff-Se-Eyy" id="3BG-YT-hIf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ca-0Z-CPt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128.98550724637681" y="67.633928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

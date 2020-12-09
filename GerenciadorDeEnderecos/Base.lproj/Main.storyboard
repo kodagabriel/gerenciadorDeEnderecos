@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wL7-Jn-l5U">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Endereços-->
+        <scene sceneID="IPw-4d-Atm">
+            <objects>
+                <tableViewController id="vHL-GF-WgQ" customClass="HomeTableViewController" customModule="GerenciadorDeEnderecos" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oBx-ie-afP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EnderecoTableViewCell" rowHeight="90" id="H9i-cN-j4d" customClass="EnderecoTableViewCell" customModule="GerenciadorDeEnderecos" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H9i-cN-j4d" id="tOf-0u-FOm">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CFI-kn-Km2">
+                                            <rect key="frame" x="16" y="0.0" width="382" height="90"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Praca Doutor Benedito, 89" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Io-ut-I4R">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Vd4-d1-ah3"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35400-000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgJ-5f-kh5">
+                                                    <rect key="frame" x="0.0" y="30" width="382" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="vQv-ll-3K5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bauxita, Ouro Preto - MG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qX-w7-t86">
+                                                    <rect key="frame" x="0.0" y="60" width="382" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="zgT-38-uld"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MgJ-5f-kh5" firstAttribute="leading" secondItem="CFI-kn-Km2" secondAttribute="leading" id="8ea-QV-yR6"/>
+                                                <constraint firstAttribute="trailing" secondItem="MgJ-5f-kh5" secondAttribute="trailing" id="u9f-sT-oxX"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="CFI-kn-Km2" secondAttribute="trailing" constant="16" id="2md-pp-lcR"/>
+                                        <constraint firstAttribute="bottom" secondItem="CFI-kn-Km2" secondAttribute="bottom" id="7Cn-IU-Mq9"/>
+                                        <constraint firstItem="CFI-kn-Km2" firstAttribute="top" secondItem="tOf-0u-FOm" secondAttribute="top" id="MwO-TP-KZe"/>
+                                        <constraint firstItem="CFI-kn-Km2" firstAttribute="leading" secondItem="tOf-0u-FOm" secondAttribute="leading" constant="16" id="oeH-OK-cTJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bairroCidadeEstadoLabel" destination="2qX-w7-t86" id="vO2-M3-I7x"/>
+                                    <outlet property="cepLabel" destination="MgJ-5f-kh5" id="gCg-FJ-eMb"/>
+                                    <outlet property="enderecoLabel" destination="0Io-ut-I4R" id="SVv-Wi-Y88"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vHL-GF-WgQ" id="LUx-1l-toE"/>
+                            <outlet property="delegate" destination="vHL-GF-WgQ" id="6sd-4S-vPm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Endereços" id="mGp-ZR-pCb">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="kRW-gR-vVR">
+                            <connections>
+                                <action selector="addButton:" destination="vHL-GF-WgQ" id="yFe-SC-q3d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fM-VD-JKB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065.217391304348" y="40.848214285714285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="d7w-uS-U0Z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wL7-Jn-l5U" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gFk-sj-njK">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vHL-GF-WgQ" kind="relationship" relationship="rootViewController" id="UZO-Ny-c56"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CtO-Ud-sc4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="155.07246376811597" y="40.848214285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

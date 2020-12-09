@@ -1,0 +1,6 @@
+framework module Pods_GerenciadorDeEnderecos_GerenciadorDeEnderecosUITests {
+  umbrella header "Pods-GerenciadorDeEnderecos-GerenciadorDeEnderecosUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
