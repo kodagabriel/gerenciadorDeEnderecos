@@ -43,7 +43,6 @@ class DetalhesEnderecoViewController: UIViewController {
             self?.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(actions, animated: true, completion: nil)
-        
     }
     // MARK: Functions
     func hideKeyboardWhenTappedAround() {
@@ -89,7 +88,6 @@ class DetalhesEnderecoViewController: UIViewController {
             trataErros(erro: textFieldStatus)
         }
     }
-    
     func trataErros(erro: TextFieldStatus) {
         switch erro {
         case .bairroVazio:

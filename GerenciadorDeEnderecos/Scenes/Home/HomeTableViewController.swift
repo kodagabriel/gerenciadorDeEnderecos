@@ -10,7 +10,6 @@ import UIKit
 class HomeTableViewController: UITableViewController {
     // MARK: Variables
     let modelView = HomeModelView()
-    
     // MARK: ViewLyfeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +18,11 @@ class HomeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         modelView.recuperaEnderecos()
     }
-    
     // MARK: IBActions
     @IBAction func addButton(_ sender: Any) {
         let view = UIStoryboard(name: "BuscaCEP", bundle: nil).instantiateViewController(withIdentifier: "BuscaCEP") as! BuscaCEPViewController
         self.navigationController?.pushViewController(view, animated: true)
     }
-    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return modelView.enderecos.count
@@ -38,7 +35,6 @@ class HomeTableViewController: UITableViewController {
         cell.addGestureRecognizer(longPress)
         return cell
     }
-    
     // MARK: Functions
     func doBindings() {
         modelView.atualizaTabela = {[weak self] in self?.tableView.reloadData()}

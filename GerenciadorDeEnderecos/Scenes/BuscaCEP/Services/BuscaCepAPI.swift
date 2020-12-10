@@ -13,11 +13,8 @@ enum errosNaBusca: Error {
 }
 
 class BuscaCepAPI: NSObject {
-    
-    
     func buscaEnderecoViaCEP(para cep: String, sucesso:@escaping(_ endereco: [String: Any]) -> Void, falha:@escaping(_ error: Error) -> Void) {
         guard let url = URL(string: "http://viacep.com.br/ws/\(cep)/json") else {return}
-        
         var requisicao = URLRequest(url: url)
         requisicao.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: requisicao) { (data, response, error) in
