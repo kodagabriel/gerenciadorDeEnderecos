@@ -57,7 +57,7 @@ class EnderecoDAO: NSObject {
         return lista
     }
     func removeEndereco(_ id: String) {
-        guard let id = UUID(uuidString: id as! String) else {return}
+        guard let id = UUID(uuidString: id) else {return}
         let enderecos = recuperaEnderecos().filter() {$0.id == id}
         guard let endereco = enderecos.first else {return}
         contexto.delete(endereco)

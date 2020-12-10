@@ -51,16 +51,23 @@ class DetalhesEnderecoViewController: UIViewController {
     }
     // MARK: Functions
     @objc func keyboardWillShow(notification:NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        print("keyboard height")
-        print(keyboardFrame.size.height)
-        self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: self.scrollView.frame.height + keyboardFrame.size.height + 20)
+        adjustInsetForKeyboardShow(true, notification: notification)
     }
     @objc func keyboardWillHide(notification:NSNotification) {
-        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-        scrollView.contentInset = contentInset
+        adjustInsetForKeyboardShow(false, notification: notification)
+    }
+    func adjustInsetForKeyboardShow(_ show: Bool, notification: NSNotification) {
+      guard
+        let userInfo = notification.userInfo,
+        let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
+          as? NSValue
+        else {
+          return
+      }
+        
+      let adjustmentHeight = (keyboardFrame.cgRectValue.height + 20) * (show ? 1 : -1)
+      scrollView.contentInset.bottom += adjustmentHeight
+      scrollView.verticalScrollIndicatorInsets.bottom += adjustmentHeight
     }
     func configuraBotaoDeAcao() {
         let button_tittle = endereco?["id"] == nil ? "Salvar" : "Atualizar"
@@ -99,7 +106,7 @@ class DetalhesEnderecoViewController: UIViewController {
         guard let cidade = cidadeTextField.text else {return [:]}
         guard let estado = estadoTextField.text else {return [:]}
         guard let cep = cepTextField.text else {return [:]}
-        
+        // REFATORAR
         let dic: Dictionary<String, Any> = [
             "id": id,
             "logradouro": logradouro,
