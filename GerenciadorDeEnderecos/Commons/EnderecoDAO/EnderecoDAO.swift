@@ -15,26 +15,38 @@ class EnderecoDAO: NSObject {
             return appDelegate.persistentContainer.viewContext
     }
     // MARK: Functions
-    func salvarEndereco(dicEndereco: Dictionary<String, Any>) {
+    func preparaEndereco(dicEndereco: Dictionary<String, Any>) -> Endereco?{
         var endereco:NSManagedObject?
-        guard let id = UUID(uuidString: dicEndereco["id"] as! String) else {return}
+        guard let id = UUID(uuidString: dicEndereco["id"] as! String) else {return nil}
         let enderecos = recuperaEnderecos().filter() {$0.id == id}
         if enderecos.count > 0 {
-            guard let enderecoEncontrado = enderecos.first else {return}
+            guard let enderecoEncontrado = enderecos.first else {return nil}
             endereco = enderecoEncontrado
         } else {
             let entidade = NSEntityDescription.entity(forEntityName: "Endereco", in: contexto)
             endereco = NSManagedObject(entity: entidade!, insertInto: contexto)
         }
         endereco?.setValue(id, forKey: "id")
-        endereco?.setValue(dicEndereco["logradouro"] as? String, forKey: "logradouro")
-        endereco?.setValue(dicEndereco["complemento"] as? String, forKey: "complemento")
-        endereco?.setValue(dicEndereco["bairro"] as? String, forKey: "bairro")
-        endereco?.setValue(dicEndereco["cidade"] as? String, forKey: "cidade")
-        endereco?.setValue(dicEndereco["estado"] as? String, forKey: "estado")
-        endereco?.setValue(dicEndereco["cep"], forKey: "cep")
-        guard let numero = dicEndereco["numero"] as? Int else {return}
-        endereco?.setValue(numero, forKey: "numero")
+        
+        var end: Endereco? = endereco as? Endereco
+        end = preencheEndereco(end, com: dicEndereco)
+        return end
+    }
+    func preencheEndereco(_ endereco: Endereco?, com dicEndereco: Dictionary<String, Any>) -> Endereco? {
+        for (key, value) in dicEndereco {
+            if key == "numero" {
+                if let numero = value as? Int {
+                    endereco?.setValue(numero, forKey: key)
+                }
+            } else {
+                if key != "id" {
+                    endereco?.setValue(value as? String, forKey: key)
+                }
+            }
+        }
+        return endereco
+    }
+    func salvarEndereco() {
         atualizaContexto()
     }
     private func atualizaContexto() {
@@ -44,7 +56,13 @@ class EnderecoDAO: NSObject {
             print(error.localizedDescription)
         }
     }
+    private func removeAtualizacoesNaoSalvas() {
+        if contexto.hasChanges {
+            contexto.rollback()
+        }
+    }
     func recuperaEnderecos() -> Array<Endereco> {
+        removeAtualizacoesNaoSalvas()
         let pesquisa:NSFetchRequest<Endereco> = Endereco.fetchRequest()
         pesquisa.sortDescriptors = [NSSortDescriptor(key: "logradouro", ascending: true)]
         let gerenciaResultados:NSFetchedResultsController<Endereco> = NSFetchedResultsController(fetchRequest: pesquisa, managedObjectContext: contexto, sectionNameKeyPath: nil, cacheName: nil)
@@ -56,10 +74,7 @@ class EnderecoDAO: NSObject {
         guard let lista = gerenciaResultados.fetchedObjects else {return []}
         return lista
     }
-    func removeEndereco(_ id: String) {
-        guard let id = UUID(uuidString: id) else {return}
-        let enderecos = recuperaEnderecos().filter() {$0.id == id}
-        guard let endereco = enderecos.first else {return}
+    func removeEndereco(_ endereco: Endereco) {
         contexto.delete(endereco)
         atualizaContexto()
     }

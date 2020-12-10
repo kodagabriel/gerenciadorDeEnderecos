@@ -137,8 +137,8 @@
 		FC5D5A8A257EA69400A4BEC7 /* BuscaCEP */ = {
 			isa = PBXGroup;
 			children = (
-				FCF6232F2582514100E327D9 /* ViewModel */,
 				FC5D5A99257EAB7800A4BEC7 /* Services */,
+				FCF6232F2582514100E327D9 /* ViewModel */,
 				FC5D5A94257EA92600A4BEC7 /* BuscaCEPViewController.swift */,
 				FC5D5A8F257EA6D400A4BEC7 /* BuscaCEP.storyboard */,
 			);

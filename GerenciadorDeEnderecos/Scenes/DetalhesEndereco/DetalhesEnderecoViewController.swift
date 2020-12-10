@@ -29,22 +29,28 @@ class DetalhesEnderecoViewController: UIViewController {
         configuraBotaoDeAcao()
         configuraBotaoDeletar()
         preencheTextFields()
+        hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
-    // MARK: IBActions
+    // MARK: IBAction
     @IBAction func deletarRegistro(_ sender: UIButton) {
-        guard let id = viewModel.endereco?["id"] as? String else {return}
         let actions = UIAlertController(title: "Deseja remover esse endereço?", message: "Essa ação é irreversível", preferredStyle: .alert)
         actions.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         actions.addAction(UIAlertAction(title: "Remover", style: .destructive, handler: { [weak self](_) in
-            EnderecoDAO().removeEndereco(id)
+            guard let endereco = self?.viewModel.endereco else {return}
+            EnderecoDAO().removeEndereco(endereco)
             self?.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(actions, animated: true, completion: nil)
         
     }
     // MARK: Functions
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+            tap.cancelsTouchesInView = false
+         view.addGestureRecognizer(tap)
+    }
     @objc func keyboardWillShow(notification:NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
@@ -58,14 +64,14 @@ class DetalhesEnderecoViewController: UIViewController {
            scrollView.contentInset = contentInset
     }
     func configuraBotaoDeAcao() {
-        let button_tittle = viewModel.endereco?["id"] == nil ? "Salvar" : "Atualizar"
+        let button_tittle = viewModel.isNew ? "Salvar" : "Atualizar"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: button_tittle, style: .plain, target: self, action: #selector(salvar))
     }
     func configuraBotaoDeletar() {
-        if viewModel.endereco?["id"] != nil {
-            deletarButton.isHidden = false
-        } else {
+        if viewModel.isNew {
             deletarButton.isHidden = true
+        } else {
+            deletarButton.isHidden = false
         }
     }
     @objc func salvar() {
@@ -115,14 +121,16 @@ class DetalhesEnderecoViewController: UIViewController {
         return .allPassed
     }
     func preencheTextFields() {
-        guard let end = viewModel.endereco else {return}
-        logradouroTextField.text = end["logradouro"] as? String
-        bairroTextField.text = end["bairro"] as? String
-        cidadeTextField.text = end["cidade"] as? String
-        estadoTextField.text = end["estado"] as? String
-        numeroTextField.text = String(describing: end["numero"]!)
-        complementoTextField.text = end["complemento"] as? String
-        cepTextField.text = end["cep"] as? String
+        logradouroTextField.text = viewModel.endereco?.logradouro
+        bairroTextField.text = viewModel.endereco?.bairro
+        cidadeTextField.text = viewModel.endereco?.cidade
+        estadoTextField.text = viewModel.endereco?.estado
+        guard let numero = viewModel.endereco?.numero else {return}
+        if (numero != 0) {
+            numeroTextField.text = "\(numero)"
+        }
+        complementoTextField.text = viewModel.endereco?.complemento
+        cepTextField.text = viewModel.endereco?.cep
         checaSeCepUnicoDaCidade()
     }
     func checaSeCepUnicoDaCidade() {
@@ -133,3 +141,4 @@ class DetalhesEnderecoViewController: UIViewController {
         }
     }
 }
+

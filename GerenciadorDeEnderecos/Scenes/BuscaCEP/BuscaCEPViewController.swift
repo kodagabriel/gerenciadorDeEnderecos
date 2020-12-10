@@ -17,6 +17,7 @@ class BuscaCEPViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configuraTextField()
+        hideKeyboardWhenTappedAround()
         doBinding()
     }
     // MARK: IBActions
@@ -24,6 +25,11 @@ class BuscaCEPViewController: UIViewController {
         preparaBuscaCEP()
     }
     // MARK: Functions
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+            tap.cancelsTouchesInView = false
+         view.addGestureRecognizer(tap)
+    }
     func doBinding() {
         viewModel.travaDestravaButton = {[weak self] in self?.travaDestravaButton()}
         viewModel.navegaPara = {[weak self] (view, animated) in

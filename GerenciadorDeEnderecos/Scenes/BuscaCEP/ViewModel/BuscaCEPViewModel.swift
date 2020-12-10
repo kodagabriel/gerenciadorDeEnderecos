@@ -22,7 +22,9 @@ class BuscaCEPViewModel: NSObject {
     }
     func montaDic(_ endereco: Dictionary<String, Any>) -> Dictionary<String, Any> {
         guard let logradouro = endereco["logradouro"], let bairro = endereco["bairro"], let cidade = endereco["localidade"], let estado = endereco["uf"], let cep = endereco["cep"] else {return [:]}
+        let id = String(describing: UUID())
         let dic: Dictionary<String, Any> = [
+            "id": id,
             "logradouro": logradouro,
             "numero": "",
             "complemento": "",
@@ -41,7 +43,8 @@ class BuscaCEPViewModel: NSObject {
                     self?.limpaTextField()
                     self?.travaDestravaButton()
                     let enderecoView = UIStoryboard(name: "DetalhesEndereco", bundle: nil).instantiateViewController(withIdentifier: "DetalhesEndereco") as! DetalhesEnderecoViewController
-                    let endereco = self?.montaDic(endereco)
+                    guard let dicEndereco = self?.montaDic(endereco) else {return}
+                    guard let endereco = EnderecoDAO().preparaEndereco(dicEndereco: dicEndereco) else {return}
                     enderecoView.viewModel.endereco = endereco
                     self?.navegaPara(enderecoView, true)
                 }

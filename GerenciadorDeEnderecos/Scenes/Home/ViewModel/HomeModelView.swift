@@ -11,24 +11,18 @@ class HomeModelView: NSObject {
     // MARK: Variables
     var enderecos: [Endereco] = []
     var atualizaTabela: (() -> ()) = {}
+    var navegaPara: ((UIViewController, Bool) -> ()) = {_,_ in }
     // MARK: Functions
     func recuperaEnderecos() {
         enderecos = EnderecoDAO().recuperaEnderecos()
         atualizaTabela()
     }
     
-    func montaDic(endereco: Endereco) -> Dictionary<String,Any>{
-        guard let id = endereco.id, let logradouro = endereco.logradouro, let complemento = endereco.complemento, let bairro = endereco.bairro, let cidade = endereco.cidade, let estado = endereco.estado, let cep = endereco.cep else {return [:]}
-        let dic: Dictionary<String, Any> = [
-            "id": String(describing: id),
-            "logradouro": logradouro,
-            "numero": endereco.numero,
-            "complemento": complemento,
-            "bairro": bairro,
-            "cidade": cidade,
-            "estado": estado,
-            "cep": cep
-        ]
-        return dic
+    func editarEndereco(tag: Int) {
+        let endereco = enderecos[tag]
+        let detalhes = UIStoryboard(name: "DetalhesEndereco", bundle: nil).instantiateViewController(withIdentifier: "DetalhesEndereco") as! DetalhesEnderecoViewController
+        detalhes.viewModel.endereco = endereco
+        detalhes.viewModel.isNew = false
+        navegaPara(detalhes, true)
     }
 }

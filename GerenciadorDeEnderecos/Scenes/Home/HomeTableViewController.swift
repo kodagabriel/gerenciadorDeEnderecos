@@ -42,13 +42,11 @@ class HomeTableViewController: UITableViewController {
     // MARK: Functions
     func doBindings() {
         modelView.atualizaTabela = {[weak self] in self?.tableView.reloadData()}
+        modelView.navegaPara = {[weak self] (view, animated) in self?.navigationController?.pushViewController(view, animated: animated)}
     }
     @objc func editarEndereco(_ longPress: UILongPressGestureRecognizer) {
         if longPress.state == .began {
-            let endereco = modelView.enderecos[(longPress.view?.tag)!]
-            let detalhes = UIStoryboard(name: "DetalhesEndereco", bundle: nil).instantiateViewController(withIdentifier: "DetalhesEndereco") as! DetalhesEnderecoViewController
-            detalhes.viewModel.endereco = modelView.montaDic(endereco: endereco)
-            navigationController?.pushViewController(detalhes, animated: true)
+            modelView.editarEndereco(tag: (longPress.view?.tag)!)
         }
     }
     

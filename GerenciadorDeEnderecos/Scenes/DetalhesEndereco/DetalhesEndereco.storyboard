@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvf-Es-9DY">
-                                        <rect key="frame" x="0.0" y="0.0" width="416" height="713"/>
+                                        <rect key="frame" x="-1" y="0.0" width="416" height="713"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PZU-eI-yLP">
                                                 <rect key="frame" x="16" y="16" width="384" height="697"/>
@@ -161,7 +161,6 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="qvf-Es-9DY" firstAttribute="width" secondItem="Krg-vg-1eR" secondAttribute="width" multiplier="1.00483" id="5qN-aQ-BTX"/>
                                     <constraint firstItem="qvf-Es-9DY" firstAttribute="leading" secondItem="Krg-vg-1eR" secondAttribute="leading" id="PX7-wC-yFw"/>
                                     <constraint firstItem="qvf-Es-9DY" firstAttribute="top" secondItem="Krg-vg-1eR" secondAttribute="top" id="cMu-bV-md5"/>
                                     <constraint firstAttribute="bottom" secondItem="qvf-Es-9DY" secondAttribute="bottom" id="t9C-Qr-Zbk"/>
@@ -174,8 +173,10 @@
                         <constraints>
                             <constraint firstItem="Krg-vg-1eR" firstAttribute="leading" secondItem="d7f-V0-EaR" secondAttribute="leading" id="0Dy-7h-svn"/>
                             <constraint firstItem="Krg-vg-1eR" firstAttribute="trailing" secondItem="d7f-V0-EaR" secondAttribute="trailing" id="142-fb-Jkx"/>
+                            <constraint firstItem="qvf-Es-9DY" firstAttribute="centerX" secondItem="d7f-V0-EaR" secondAttribute="centerX" id="4CP-k6-LuP"/>
                             <constraint firstAttribute="bottom" secondItem="Krg-vg-1eR" secondAttribute="bottom" id="6Mj-G5-x9V"/>
                             <constraint firstItem="Krg-vg-1eR" firstAttribute="top" secondItem="d7f-V0-EaR" secondAttribute="top" id="Hlf-H1-CKd"/>
+                            <constraint firstItem="qvf-Es-9DY" firstAttribute="width" secondItem="d7f-V0-EaR" secondAttribute="width" multiplier="1.00483" id="siJ-8z-AeR"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
