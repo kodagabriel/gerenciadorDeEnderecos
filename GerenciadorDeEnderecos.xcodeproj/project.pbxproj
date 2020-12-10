@@ -17,7 +17,7 @@
 		FC5D5A9B257EAB8B00A4BEC7 /* BuscaCepAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D5A9A257EAB8B00A4BEC7 /* BuscaCepAPI.swift */; };
 		FC5D5AA9257EAFA300A4BEC7 /* EnderecoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D5AA8257EAFA300A4BEC7 /* EnderecoDAO.swift */; };
 		FCD078DF257E780000A83A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD078DE257E780000A83A24 /* AppDelegate.swift */; };
-		FCD078E6257E780000A83A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD078E4257E780000A83A24 /* Main.storyboard */; };
+		FCD078E6257E780000A83A24 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD078E4257E780000A83A24 /* Home.storyboard */; };
 		FCD078E8257E780100A83A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCD078E7257E780100A83A24 /* Assets.xcassets */; };
 		FCD078EB257E780100A83A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD078E9257E780100A83A24 /* LaunchScreen.storyboard */; };
 		FCD078F6257E780200A83A24 /* GerenciadorDeEnderecosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD078F5257E780200A83A24 /* GerenciadorDeEnderecosTests.swift */; };
@@ -25,6 +25,9 @@
 		FCD07925257E7A8100A83A24 /* EnderecoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD07924257E7A8100A83A24 /* EnderecoTableViewCell.swift */; };
 		FCD07932257E7C2C00A83A24 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD07931257E7C2C00A83A24 /* HomeTableViewController.swift */; };
 		FCD07938257E8CB500A83A24 /* GerenciadorDeEnderecos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCD07936257E8CB500A83A24 /* GerenciadorDeEnderecos.xcdatamodeld */; };
+		FCF6231525824D8A00E327D9 /* HomeModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6231425824D8A00E327D9 /* HomeModelView.swift */; };
+		FCF623272582512D00E327D9 /* BuscaCEPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF623262582512D00E327D9 /* BuscaCEPViewModel.swift */; };
+		FCF6233825825A8900E327D9 /* DetalhesEnderecoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6233725825A8900E327D9 /* DetalhesEnderecoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +65,7 @@
 		FC5D5AA8257EAFA300A4BEC7 /* EnderecoDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnderecoDAO.swift; sourceTree = "<group>"; };
 		FCD078DB257E780000A83A24 /* GerenciadorDeEnderecos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GerenciadorDeEnderecos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCD078DE257E780000A83A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FCD078E5257E780000A83A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FCD078E5257E780000A83A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		FCD078E7257E780100A83A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCD078EA257E780100A83A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCD078EC257E780100A83A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,6 +78,9 @@
 		FCD07924257E7A8100A83A24 /* EnderecoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnderecoTableViewCell.swift; sourceTree = "<group>"; };
 		FCD07931257E7C2C00A83A24 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		FCD07937257E8CB500A83A24 /* GerenciadorDeEnderecos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GerenciadorDeEnderecos.xcdatamodel; sourceTree = "<group>"; };
+		FCF6231425824D8A00E327D9 /* HomeModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModelView.swift; sourceTree = "<group>"; };
+		FCF623262582512D00E327D9 /* BuscaCEPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscaCEPViewModel.swift; sourceTree = "<group>"; };
+		FCF6233725825A8900E327D9 /* DetalhesEnderecoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalhesEnderecoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,61 +134,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FC5D5A7A257E950A00A4BEC7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		FC5D5A7B257E950F00A4BEC7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FC5D5A7D257E953800A4BEC7 /* DetalhesEndereco.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		FC5D5A7C257E951300A4BEC7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FC5D5A82257EA20C00A4BEC7 /* DetalhesEnderecoViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		FC5D5A8A257EA69400A4BEC7 /* BuscaCEP */ = {
 			isa = PBXGroup;
 			children = (
+				FCF6232F2582514100E327D9 /* ViewModel */,
 				FC5D5A99257EAB7800A4BEC7 /* Services */,
-				FC5D5A8E257EA6AD00A4BEC7 /* Model */,
-				FC5D5A8C257EA6A300A4BEC7 /* View */,
-				FC5D5A8D257EA6A700A4BEC7 /* Controller */,
-			);
-			path = BuscaCEP;
-			sourceTree = "<group>";
-		};
-		FC5D5A8C257EA6A300A4BEC7 /* View */ = {
-			isa = PBXGroup;
-			children = (
+				FC5D5A94257EA92600A4BEC7 /* BuscaCEPViewController.swift */,
 				FC5D5A8F257EA6D400A4BEC7 /* BuscaCEP.storyboard */,
 			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		FC5D5A8D257EA6A700A4BEC7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FC5D5A94257EA92600A4BEC7 /* BuscaCEPViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		FC5D5A8E257EA6AD00A4BEC7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = BuscaCEP;
 			sourceTree = "<group>";
 		};
 		FC5D5A99257EAB7800A4BEC7 /* Services */ = {
@@ -235,11 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				FC5D5AA6257EAF2300A4BEC7 /* Commons */,
-				FC5D5A8A257EA69400A4BEC7 /* BuscaCEP */,
-				FCD0792C257E7BE600A83A24 /* Home */,
-				FCD07922257E7A4900A83A24 /* DetalhesEndereco */,
+				FCF6231F25824DD800E327D9 /* Scenes */,
 				FCD078DE257E780000A83A24 /* AppDelegate.swift */,
-				FCD078E4257E780000A83A24 /* Main.storyboard */,
 				FCD078E7257E780100A83A24 /* Assets.xcassets */,
 				FCD078E9257E780100A83A24 /* LaunchScreen.storyboard */,
 				FCD078EC257E780100A83A24 /* Info.plist */,
@@ -269,36 +226,22 @@
 		FCD07922257E7A4900A83A24 /* DetalhesEndereco */ = {
 			isa = PBXGroup;
 			children = (
-				FC5D5A7A257E950A00A4BEC7 /* Model */,
-				FC5D5A7B257E950F00A4BEC7 /* View */,
-				FC5D5A7C257E951300A4BEC7 /* Controller */,
+				FCF6233625825A5700E327D9 /* ViewModel */,
+				FC5D5A7D257E953800A4BEC7 /* DetalhesEndereco.storyboard */,
+				FC5D5A82257EA20C00A4BEC7 /* DetalhesEnderecoViewController.swift */,
 			);
 			path = DetalhesEndereco;
-			sourceTree = "<group>";
-		};
-		FCD07923257E7A5400A83A24 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		FCD0792C257E7BE600A83A24 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				FCD07942257E904D00A83A24 /* View */,
-				FCD07923257E7A5400A83A24 /* Model */,
-				FCD0792D257E7BF300A83A24 /* Controller */,
+				FCF6232E2582513200E327D9 /* ViewModel */,
+				FCD07931257E7C2C00A83A24 /* HomeTableViewController.swift */,
+				FCD078E4257E780000A83A24 /* Home.storyboard */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		FCD0792D257E7BF300A83A24 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FCD07931257E7C2C00A83A24 /* HomeTableViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		FCD07942257E904D00A83A24 /* View */ = {
@@ -307,6 +250,40 @@
 				FCD07924257E7A8100A83A24 /* EnderecoTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FCF6231F25824DD800E327D9 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				FCD07922257E7A4900A83A24 /* DetalhesEndereco */,
+				FC5D5A8A257EA69400A4BEC7 /* BuscaCEP */,
+				FCD0792C257E7BE600A83A24 /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		FCF6232E2582513200E327D9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FCF6231425824D8A00E327D9 /* HomeModelView.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FCF6232F2582514100E327D9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FCF623262582512D00E327D9 /* BuscaCEPViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FCF6233625825A5700E327D9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FCF6233725825A8900E327D9 /* DetalhesEnderecoViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,7 +395,7 @@
 			files = (
 				FCD078EB257E780100A83A24 /* LaunchScreen.storyboard in Resources */,
 				FCD078E8257E780100A83A24 /* Assets.xcassets in Resources */,
-				FCD078E6257E780000A83A24 /* Main.storyboard in Resources */,
+				FCD078E6257E780000A83A24 /* Home.storyboard in Resources */,
 				FC5D5A90257EA6D400A4BEC7 /* BuscaCEP.storyboard in Resources */,
 				FC5D5A7E257E953800A4BEC7 /* DetalhesEndereco.storyboard in Resources */,
 			);
@@ -534,8 +511,11 @@
 			files = (
 				FC5D5A95257EA92600A4BEC7 /* BuscaCEPViewController.swift in Sources */,
 				FCD07932257E7C2C00A83A24 /* HomeTableViewController.swift in Sources */,
+				FCF6233825825A8900E327D9 /* DetalhesEnderecoViewModel.swift in Sources */,
 				FC5D5A83257EA20C00A4BEC7 /* DetalhesEnderecoViewController.swift in Sources */,
 				FCD078DF257E780000A83A24 /* AppDelegate.swift in Sources */,
+				FCF623272582512D00E327D9 /* BuscaCEPViewModel.swift in Sources */,
+				FCF6231525824D8A00E327D9 /* HomeModelView.swift in Sources */,
 				FCD07938257E8CB500A83A24 /* GerenciadorDeEnderecos.xcdatamodeld in Sources */,
 				FC5D5AA9257EAFA300A4BEC7 /* EnderecoDAO.swift in Sources */,
 				FCD07925257E7A8100A83A24 /* EnderecoTableViewCell.swift in Sources */,
@@ -575,12 +555,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FCD078E4257E780000A83A24 /* Main.storyboard */ = {
+		FCD078E4257E780000A83A24 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FCD078E5257E780000A83A24 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
 		FCD078E9257E780100A83A24 /* LaunchScreen.storyboard */ = {

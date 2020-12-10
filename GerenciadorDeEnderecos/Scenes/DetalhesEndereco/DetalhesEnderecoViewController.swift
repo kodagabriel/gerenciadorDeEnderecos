@@ -7,12 +7,7 @@
 
 import UIKit
 
-enum TextFieldStatus {
-    case logradouroVazio
-    case numeroVazio
-    case bairroVazio
-    case allPassed
-}
+
 
 class DetalhesEnderecoViewController: UIViewController {
     // MARK: IBOutlets
@@ -27,19 +22,19 @@ class DetalhesEnderecoViewController: UIViewController {
     @IBOutlet weak var deletarButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     // MARK: Variables
-    var endereco: [String: Any]?
+    var viewModel = DetalhesEnderecoViewModel()
     // MARK: ViewLyfeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configuraBotaoDeAcao()
         configuraBotaoDeletar()
-        inicializaTextFields()
+        preencheTextFields()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
     // MARK: IBActions
     @IBAction func deletarRegistro(_ sender: UIButton) {
-        guard let id = endereco?["id"] as? String else {return}
+        guard let id = viewModel.endereco?["id"] as? String else {return}
         let actions = UIAlertController(title: "Deseja remover esse endereço?", message: "Essa ação é irreversível", preferredStyle: .alert)
         actions.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         actions.addAction(UIAlertAction(title: "Remover", style: .destructive, handler: { [weak self](_) in
@@ -51,30 +46,23 @@ class DetalhesEnderecoViewController: UIViewController {
     }
     // MARK: Functions
     @objc func keyboardWillShow(notification:NSNotification) {
-        adjustInsetForKeyboardShow(true, notification: notification)
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        scrollView.contentInset = contentInset
     }
     @objc func keyboardWillHide(notification:NSNotification) {
-        adjustInsetForKeyboardShow(false, notification: notification)
-    }
-    func adjustInsetForKeyboardShow(_ show: Bool, notification: NSNotification) {
-      guard
-        let userInfo = notification.userInfo,
-        let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
-          as? NSValue
-        else {
-          return
-      }
-        
-      let adjustmentHeight = (keyboardFrame.cgRectValue.height + 20) * (show ? 1 : -1)
-      scrollView.contentInset.bottom += adjustmentHeight
-      scrollView.verticalScrollIndicatorInsets.bottom += adjustmentHeight
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+           scrollView.contentInset = contentInset
     }
     func configuraBotaoDeAcao() {
-        let button_tittle = endereco?["id"] == nil ? "Salvar" : "Atualizar"
+        let button_tittle = viewModel.endereco?["id"] == nil ? "Salvar" : "Atualizar"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: button_tittle, style: .plain, target: self, action: #selector(salvar))
     }
     func configuraBotaoDeletar() {
-        if endereco?["id"] != nil {
+        if viewModel.endereco?["id"] != nil {
             deletarButton.isHidden = false
         } else {
             deletarButton.isHidden = true
@@ -84,41 +72,18 @@ class DetalhesEnderecoViewController: UIViewController {
         let textFieldStatus = checaTextFields()
         switch textFieldStatus {
         case .allPassed:
-            EnderecoDAO().salvarEndereco(dicEndereco: montaDicEndereco())
+            guard let logradouro = logradouroTextField.text else {return}
+            guard let numero_s = numeroTextField.text else {return}
+            guard let complemento = complementoTextField.text else {return}
+            guard let bairro = bairroTextField.text else {return}
+            viewModel.salvaEndereco(logradouro: logradouro, numero_s: numero_s, complemento: complemento, bairro: bairro)
             navigationController?.popToRootViewController(animated: true)
             break
         default:
             trataErros(erro: textFieldStatus)
         }
     }
-    func montaDicEndereco() -> Dictionary<String, Any> {
-        var id = ""
-        if endereco?["id"] == nil {
-            id = String(describing: UUID())
-        } else {
-            guard let id_existente = endereco?["id"] else {return [:]}
-            id = String(describing: id_existente)
-        }
-        guard let logradouro = logradouroTextField.text else {return [:]}
-        guard let numero_s = numeroTextField.text, let numero = Int(numero_s) else {return [:]}
-        guard let complemento = complementoTextField.text else {return [:]}
-        guard let bairro = bairroTextField.text else {return [:]}
-        guard let cidade = cidadeTextField.text else {return [:]}
-        guard let estado = estadoTextField.text else {return [:]}
-        guard let cep = cepTextField.text else {return [:]}
-        // REFATORAR
-        let dic: Dictionary<String, Any> = [
-            "id": id,
-            "logradouro": logradouro,
-            "numero": numero,
-            "complemento": complemento,
-            "bairro": bairro,
-            "cidade": cidade,
-            "estado": estado,
-            "cep": cep
-        ]
-        return dic
-    }
+    
     func trataErros(erro: TextFieldStatus) {
         switch erro {
         case .bairroVazio:
@@ -149,8 +114,8 @@ class DetalhesEnderecoViewController: UIViewController {
         }
         return .allPassed
     }
-    func inicializaTextFields() {
-        guard let end = endereco else {return}
+    func preencheTextFields() {
+        guard let end = viewModel.endereco else {return}
         logradouroTextField.text = end["logradouro"] as? String
         bairroTextField.text = end["bairro"] as? String
         cidadeTextField.text = end["cidade"] as? String
