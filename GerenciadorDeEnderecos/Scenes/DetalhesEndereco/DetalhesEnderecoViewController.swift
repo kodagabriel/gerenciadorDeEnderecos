@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class DetalhesEnderecoViewController: UIViewController {
     // MARK: IBOutlets
     @IBOutlet weak var scrollView: UIScrollView!
