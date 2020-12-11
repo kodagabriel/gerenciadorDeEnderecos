@@ -251,7 +251,7 @@
 		FCD07922257E7A4900A83A24 /* DetalhesEndereco */ = {
 			isa = PBXGroup;
 			children = (
-				FCF6233625825A5700E327D9 /* ViewModel */,
+				FCF6233725825A8900E327D9 /* DetalhesEnderecoViewModel.swift */,
 				FC5D5A82257EA20C00A4BEC7 /* DetalhesEnderecoViewController.swift */,
 				FC5D5A7D257E953800A4BEC7 /* DetalhesEnderecoViewController.storyboard */,
 			);
@@ -285,14 +285,6 @@
 				FCD0792C257E7BE600A83A24 /* Home */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		FCF6233625825A5700E327D9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				FCF6233725825A8900E327D9 /* DetalhesEnderecoViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
