@@ -7,11 +7,11 @@
 
 import UIKit
 
-class HomeModelView: NSObject {
+class HomeViewModel: NSObject {
     // MARK: Variables
     var enderecos: [Endereco] = []
     var atualizaTabela: (() -> ()) = {}
-    var navegaPara: ((UIViewController, Bool) -> ()) = {_,_ in }
+    var seeDetailsOf: ((Endereco, Bool) -> ()) = {(_,_) in }
     // MARK: Functions
     func recuperaEnderecos() {
         enderecos = EnderecoDAO().recuperaEnderecos()
@@ -23,10 +23,7 @@ class HomeModelView: NSObject {
     }
     
     func editarEndereco(tag: Int) {
-        let endereco = enderecos[tag]
-        let detalhes = UIStoryboard(name: "DetalhesEndereco", bundle: nil).instantiateViewController(withIdentifier: "DetalhesEndereco") as! DetalhesEnderecoViewController
-        detalhes.viewModel.endereco = endereco
-        detalhes.viewModel.isNew = false
-        navegaPara(detalhes, true)
+        let endereco = getEndereco(at: tag)
+        seeDetailsOf(endereco, false)
     }
 }

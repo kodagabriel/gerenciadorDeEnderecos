@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetalhesEnderecoViewController: UIViewController {
+class DetalhesEnderecoViewController: UIViewController, Storyboarded {
     // MARK: IBOutlets
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var logradouroTextField: UITextField!
@@ -21,6 +21,7 @@ class DetalhesEnderecoViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     // MARK: Variables
     var viewModel = DetalhesEnderecoViewModel()
+    weak var coordinator: MainCoordinator?
     // MARK: ViewLyfeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()

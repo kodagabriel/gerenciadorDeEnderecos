@@ -7,12 +7,13 @@
 
 import UIKit
 
-class BuscaCEPViewController: UIViewController {
+class BuscaCEPViewController: UIViewController, Storyboarded {
     // MARK: IBOutlets
     @IBOutlet weak var cepTextField: UITextField!
     @IBOutlet weak var buscarButton: UIButton!
     // MARK: Variables
     let viewModel = BuscaCEPViewModel()
+    weak var coordinator: MainCoordinator?
     // MARK: ViewLyfeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +33,8 @@ class BuscaCEPViewController: UIViewController {
     }
     func doBinding() {
         viewModel.travaDestravaButton = {[weak self] in self?.travaDestravaButton()}
-        viewModel.navegaPara = {[weak self] (view, animated) in
-            self?.navigationController?.pushViewController(view, animated: animated)}
+        viewModel.seeDetailsOf = {[weak self] (endereco) in
+            self?.coordinator?.seeAdressDetails(of: endereco)}
         viewModel.travaDestravaButton = {[weak self] in self?.travaDestravaButton()}
     }
     func configuraTextField() {

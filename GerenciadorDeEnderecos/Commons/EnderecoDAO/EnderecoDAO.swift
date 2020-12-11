@@ -56,13 +56,12 @@ class EnderecoDAO: NSObject {
             print(error.localizedDescription)
         }
     }
-    private func removeAtualizacoesNaoSalvas() {
+    func removeAtualizacoesNaoSalvas() {
         if contexto.hasChanges {
             contexto.rollback()
         }
     }
     func recuperaEnderecos() -> Array<Endereco> {
-        removeAtualizacoesNaoSalvas()
         let pesquisa:NSFetchRequest<Endereco> = Endereco.fetchRequest()
         pesquisa.sortDescriptors = [NSSortDescriptor(key: "logradouro", ascending: true)]
         let gerenciaResultados:NSFetchedResultsController<Endereco> = NSFetchedResultsController(fetchRequest: pesquisa, managedObjectContext: contexto, sectionNameKeyPath: nil, cacheName: nil)

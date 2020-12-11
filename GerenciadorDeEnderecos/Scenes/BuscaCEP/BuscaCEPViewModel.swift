@@ -11,7 +11,7 @@ class BuscaCEPViewModel: NSObject {
     // MARK: Variables
     var travaDestravaButton: (() -> ()) = {}
     var limpaTextField: (() -> ()) = {}
-    var navegaPara: ((UIViewController, Bool) -> ()) = {(_,_) in }
+    var seeDetailsOf: ((Endereco) -> ()) = {(_) in }
     // MARK: Functions
     func verificaSeCepEValido(_ cep: String) -> Bool {
         if cep.isEmpty {
@@ -42,11 +42,9 @@ class BuscaCEPViewModel: NSObject {
                 DispatchQueue.main.async {
                     self?.limpaTextField()
                     self?.travaDestravaButton()
-                    let enderecoView = UIStoryboard(name: "DetalhesEndereco", bundle: nil).instantiateViewController(withIdentifier: "DetalhesEndereco") as! DetalhesEnderecoViewController
                     guard let dicEndereco = self?.montaDic(endereco) else {return}
                     guard let endereco = EnderecoDAO().preparaEndereco(dicEndereco: dicEndereco) else {return}
-                    enderecoView.viewModel.endereco = endereco
-                    self?.navegaPara(enderecoView, true)
+                    self?.seeDetailsOf(endereco)
                 }
             } falha: { (erro) in
                 DispatchQueue.main.async { [weak self] in

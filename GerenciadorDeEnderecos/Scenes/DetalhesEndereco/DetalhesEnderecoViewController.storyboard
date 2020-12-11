@@ -12,7 +12,7 @@
         <!--Endereço-->
         <scene sceneID="iPT-WQ-Bni">
             <objects>
-                <viewController storyboardIdentifier="DetalhesEndereco" title="Endereço" id="nin-dQ-AZx" customClass="DetalhesEnderecoViewController" customModule="GerenciadorDeEnderecos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetalhesEnderecoViewController" title="Endereço" id="nin-dQ-AZx" customClass="DetalhesEnderecoViewController" customModule="GerenciadorDeEnderecos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6aN-OX-vWc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
