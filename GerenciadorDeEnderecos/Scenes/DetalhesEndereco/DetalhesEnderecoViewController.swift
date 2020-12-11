@@ -30,21 +30,22 @@ class DetalhesEnderecoViewController: UIViewController {
         configuraBotaoDeletar()
         preencheTextFields()
         hideKeyboardWhenTappedAround()
+        doBinding()
+        checaSeCepUnicoDaCidade()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
     // MARK: IBAction
     @IBAction func deletarRegistro(_ sender: UIButton) {
-        let actions = UIAlertController(title: "Deseja remover esse endereço?", message: "Essa ação é irreversível", preferredStyle: .alert)
-        actions.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
-        actions.addAction(UIAlertAction(title: "Remover", style: .destructive, handler: { [weak self](_) in
-            guard let endereco = self?.viewModel.endereco else {return}
-            EnderecoDAO().removeEndereco(endereco)
-            self?.navigationController?.popToRootViewController(animated: true)
-        }))
-        self.present(actions, animated: true, completion: nil)
+        self.viewModel.removeEndereco()
     }
     // MARK: Functions
+    func doBinding() {
+        self.viewModel.popToRoot = {[weak self] animated in self?.navigationController?.popToRootViewController(animated: animated)}
+        self.viewModel.present = {[weak self] (actions, animated) in
+            self?.present(actions, animated: animated, completion: nil)
+        }
+    }
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
             tap.cancelsTouchesInView = false
@@ -63,14 +64,13 @@ class DetalhesEnderecoViewController: UIViewController {
            scrollView.contentInset = contentInset
     }
     func configuraBotaoDeAcao() {
-        let button_tittle = viewModel.isNew ? "Salvar" : "Atualizar"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: button_tittle, style: .plain, target: self, action: #selector(salvar))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.buttonTitle(), style: .plain, target: self, action: #selector(salvar))
     }
     func configuraBotaoDeletar() {
-        if viewModel.isNew {
-            deletarButton.isHidden = true
-        } else {
+        if viewModel.canDelete() {
             deletarButton.isHidden = false
+        } else {
+            deletarButton.isHidden = true
         }
     }
     @objc func salvar() {
@@ -89,51 +89,25 @@ class DetalhesEnderecoViewController: UIViewController {
         }
     }
     func trataErros(erro: TextFieldStatus) {
-        switch erro {
-        case .bairroVazio:
-            errorLabel.text = "Bairro não pode ser vazio"
-            break
-        case .logradouroVazio:
-            errorLabel.text = "Logradouro não pode ser vazio"
-            break
-        case .numeroVazio:
-            errorLabel.text = "Número não pode ser vazio"
-            break
-        default:
-            errorLabel.text = ""
-        }
+        errorLabel.text = viewModel.trataErros(erro: erro)
     }
     func checaTextFields() -> TextFieldStatus {
         guard let logradouro = logradouroTextField.text else {return .logradouroVazio}
         guard let numero = numeroTextField.text else {return .numeroVazio}
         guard let bairro = bairroTextField.text else {return .bairroVazio}
-        if (logradouro.isEmpty) {
-            return .logradouroVazio
-        }
-        if numero.isEmpty {
-            return .numeroVazio
-        }
-        if bairro.isEmpty {
-            return .bairroVazio
-        }
-        return .allPassed
+        return viewModel.checaValores(logradouro: logradouro, numero: numero, bairro: bairro)
     }
     func preencheTextFields() {
         logradouroTextField.text = viewModel.endereco?.logradouro
         bairroTextField.text = viewModel.endereco?.bairro
         cidadeTextField.text = viewModel.endereco?.cidade
         estadoTextField.text = viewModel.endereco?.estado
-        guard let numero = viewModel.endereco?.numero else {return}
-        if (numero != 0) {
-            numeroTextField.text = "\(numero)"
-        }
+        numeroTextField.text = viewModel.getNumeroEndereco()
         complementoTextField.text = viewModel.endereco?.complemento
         cepTextField.text = viewModel.endereco?.cep
-        checaSeCepUnicoDaCidade()
     }
     func checaSeCepUnicoDaCidade() {
-        guard let logradouro = logradouroTextField.text else {return}
-        if logradouro.isEmpty {
+        if viewModel.cepUnicoParaCidade() {
             logradouroTextField.isUserInteractionEnabled = true
             bairroTextField.isUserInteractionEnabled = true
         }

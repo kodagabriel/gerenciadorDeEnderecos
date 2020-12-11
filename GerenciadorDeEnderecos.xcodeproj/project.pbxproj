@@ -227,8 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				FCF6233625825A5700E327D9 /* ViewModel */,
-				FC5D5A7D257E953800A4BEC7 /* DetalhesEndereco.storyboard */,
 				FC5D5A82257EA20C00A4BEC7 /* DetalhesEnderecoViewController.swift */,
+				FC5D5A7D257E953800A4BEC7 /* DetalhesEndereco.storyboard */,
 			);
 			path = DetalhesEndereco;
 			sourceTree = "<group>";

@@ -18,6 +18,10 @@ class HomeModelView: NSObject {
         atualizaTabela()
     }
     
+    func getEndereco(at index: Int) -> Endereco{
+        return enderecos[index]
+    }
+    
     func editarEndereco(tag: Int) {
         let endereco = enderecos[tag]
         let detalhes = UIStoryboard(name: "DetalhesEndereco", bundle: nil).instantiateViewController(withIdentifier: "DetalhesEndereco") as! DetalhesEnderecoViewController

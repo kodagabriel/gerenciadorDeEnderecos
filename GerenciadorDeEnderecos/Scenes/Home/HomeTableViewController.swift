@@ -30,7 +30,7 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EnderecoTableViewCell", for: indexPath) as! EnderecoTableViewCell
         cell.tag = indexPath.row
-        cell.configuraCelula(modelView.enderecos[indexPath.row])
+        cell.configuraCelula(modelView.getEndereco(at: indexPath.row))
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(editarEndereco(_:)))
         cell.addGestureRecognizer(longPress)
         return cell
